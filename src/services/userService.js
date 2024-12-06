@@ -1,8 +1,9 @@
 import { users } from "../db/users.js";
+import { getUser } from "../models/users.js";
 
-export const getUser = (email) => {
+export const getUserService = (email) => {
 
-    const userFound = users.find((user) => user.email == email);
+    const userFound = getUser(email);
 
     return userFound;
 };

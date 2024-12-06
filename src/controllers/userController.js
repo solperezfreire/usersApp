@@ -1,14 +1,21 @@
-import { getUser } from "../services/userService.js";
+import { getUserService } from "../services/userService.js";
 
 export const getUserController = (req, res) => {
 
     const { email } = req.body;
 
-    const user = getUser(email);
+    const user = getUserService(email);
 
     if (!user) {
-        res.send({ "error": "not found" });
+        res.status(404);
+        res.send({
+            "status": false,
+            "message": "user not found"
+        });
     }
 
-    res.send(user);
+    res.send({
+        "status": true,
+        "data": user
+    });
 };
