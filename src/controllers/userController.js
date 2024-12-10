@@ -2,9 +2,9 @@ import { getUserService } from "../services/userService.js";
 
 export const getUserController = (req, res) => {
 
-    const { email } = req.body;
+    const { id } = req.params;
 
-    const user = getUserService(email);
+    const user = getUserService(id);
 
     if (!user) {
         res.status(404);

@@ -4,7 +4,7 @@ import { getUserController } from '../controllers/userController.js';
 const routes = Router();
 
 routes
-    .get('/getUser', getUserController)
+    .get('/users/:id', getUserController)
     ;
 
 export { routes };

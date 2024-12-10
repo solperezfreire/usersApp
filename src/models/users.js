@@ -1,7 +1,7 @@
 import { users } from "../db/users.js";
-export const getUser = (email) => {
+export const getUser = (id) => {
 
-    const userFound = users.find((user) => user.email == email);
+    const userFound = users.find((user) => user.id == id);
 
     return userFound;
 };
