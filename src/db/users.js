@@ -1,5 +1,6 @@
 export const users = [
     {
+        id: 1,
         name: 'Homero J',
         surname: 'Simpson',
         edad: 38,
@@ -9,6 +10,7 @@ export const users = [
         provincia: 'Oregon'
     },
     {
+        id: 2,
         name: 'Mirtha',
         surname: 'Legrand',
         edad: 15987516,
@@ -18,6 +20,7 @@ export const users = [
         provincia: 'CABA'
     },
     {
+        id: 3,
         name: 'P',
         surname: 'Sherman',
         edad: 32,
@@ -27,6 +30,7 @@ export const users = [
         provincia: 'Nueva Gales del Sur'
     },
     {
+        id: 4,
         name: 'Suki',
         surname: 'Chat',
         edad: 4,
@@ -36,6 +40,7 @@ export const users = [
         provincia: 'London'
     },
     {
+        id: 5,
         name: 'Milka',
         surname: 'Chat',
         edad: 3,
@@ -45,6 +50,7 @@ export const users = [
         provincia: 'New York'
     },
     {
+        id: 6,
         name: 'Merlina',
         surname: 'Chat',
         edad: 9,
@@ -54,6 +60,7 @@ export const users = [
         provincia: 'Ile-de-France'
     },
     {
+        id: 7,
         name: 'Balu',
         surname: 'Chien',
         edad: 11,
