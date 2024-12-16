@@ -1,16 +1,26 @@
-import { users } from "../db/users.js";
-import { getUser, postUser } from "../models/users.js";
+import userModel from '../models/userModel.js';
 
-export const getUserService = (id) => {
+export const getUser = (id) => {
 
-    const userFound = getUser(id);
+    const userFound = userModel.getUser(id);
 
     return userFound;
 };
 
-export const postUserService = (userData) => {
+export const createUser = (userData) => {
 
-    const newUser = postUser(userData);
+    const hasNullValue = Object.values(userData).some(value => value === null || value == '');
+
+    if (hasNullValue) {
+        return;
+    }
+
+    const newUser = userModel.postUser(userData);
 
     return newUser;
 };
+
+export default {
+    getUser,
+    createUser
+}

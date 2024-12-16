@@ -1,11 +1,11 @@
 import { Router } from 'express';
-import { getUserController, postUserController } from '../controllers/userController.js';
+import { getUser, createUser } from '../controllers/userController.js';
 
 const routes = Router();
 
 routes
-    .get('/users/:id', getUserController)
-    .post('/users', postUserController)
+    .get('/users/:id', getUser)
+    .post('/users', createUser)
     ;
 
 export { routes };

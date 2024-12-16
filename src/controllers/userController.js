@@ -1,10 +1,10 @@
-import { getUserService, postUserService } from "../services/userService.js";
+import userService from '../services/userService.js';
 
-export const getUserController = (req, res) => {
+export const getUser = (req, res) => {
 
     const { id } = req.params;
 
-    const user = getUserService(id);
+    const user = userService.getUser(id);
 
     if (!user) {
         res.status(404);
@@ -20,19 +20,17 @@ export const getUserController = (req, res) => {
     });
 };
 
-export const postUserController = (req, res) => {
+export const createUser = (req, res) => {
 
-    const hasNullValue = Object.values(req.body).some(value => value === null || value == '');
+    const newUser = userService.createUser(req.body);
 
-    if (hasNullValue) {
+    if (!newUser) {
         res.status(400);
-        return res.send({
+        res.send({
             "status": false,
             "message": "can't create user: it has null/empty value"
         });
     }
-
-    const newUser = postUserService(req.body);
 
     res.send({
         "status": true,
