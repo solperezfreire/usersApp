@@ -1,13 +1,13 @@
 import { users } from "../db/users.js";
 
-const getUser = (id) => {
+const getUserById = (id) => {
 
     const userFound = users.find((user) => user.id == id);
 
     return userFound;
 };
 
-const postUser = (userData) => {
+const insert = (userData) => {
 
     const { name, surname, age, email, address, city, province } = userData;
 
@@ -30,6 +30,6 @@ const postUser = (userData) => {
 };
 
 export default {
-    getUser,
-    postUser
+    getUserById,
+    insert
 }
