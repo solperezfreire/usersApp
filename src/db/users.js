@@ -3,71 +3,80 @@ export const users = [
         id: 1,
         name: 'Homero J',
         surname: 'Simpson',
-        edad: 38,
+        age: 38,
         email: 'homerosimpson@gmail.com',
-        direccion: 'Avenida Siempreviva 742',
-        localidad: 'Springfield',
-        provincia: 'Oregon'
+        password: 'password1',
+        address: 'Avenida Siempreviva 742',
+        city: 'Springfield',
+        province: 'Oregon'
     },
     {
         id: 2,
         name: 'Mirtha',
         surname: 'Legrand',
-        edad: 15987516,
+        age: 15987516,
         email: 'mirthalegrand@gmail.com',
-        direccion: 'Av Libertador 1546',
-        localidad: 'CABA',
-        provincia: 'CABA'
+        password: 'password2',
+        address: 'Av Libertador 1546',
+        city: 'CABA',
+        province: 'CABA'
     },
     {
         id: 3,
         name: 'P',
         surname: 'Sherman',
-        edad: 32,
+        age: 32,
         email: 'psherman@gmail.com',
-        direccion: 'Wallaby 42',
-        localidad: 'Sydney',
+        password: 'password3',
+        address: 'Wallaby 42',
+        city: 'Sydney',
         provincia: 'Nueva Gales del Sur'
     },
     {
         id: 4,
         name: 'Suki',
         surname: 'Chat',
-        edad: 4,
+        age: 4,
         email: 'suki@gmail.com',
-        direccion: 'Lexington 12',
-        localidad: 'London',
-        provincia: 'London'
+        password: 'password4',
+        address: '12 Lexington',
+        city: 'London',
+        province: 'London'
     },
     {
         id: 5,
         name: 'Milka',
         surname: 'Chat',
-        edad: 3,
+        age: 3,
         email: 'milka@gmail.com',
-        direccion: '652 5th avenue',
-        localidad: 'Manhattan',
-        provincia: 'New York'
+        password: 'password5',
+        address: '652 5th avenue',
+        city: 'Manhattan',
+        province: 'New York'
     },
     {
         id: 6,
         name: 'Merlina',
         surname: 'Chat',
-        edad: 9,
+        age: 9,
         email: 'merlina@gmail.com',
-        direccion: 'Av des Champs-Elysees 52',
-        localidad: 'Paris',
-        provincia: 'Ile-de-France'
+        password: 'password6',
+        address: 'Av des Champs-Elysees 52',
+        city: 'Paris',
+        province: 'Ile-de-France'
     },
     {
         id: 7,
         name: 'Balu',
         surname: 'Chien',
-        edad: 11,
+        age: 11,
         email: 'balu@gmail.com',
-        direccion: 'Gran Via 17',
-        localidad: 'Madrid',
-        provincia: 'Madrid'
+        password: 'password7',
+        address: 'Gran Via 17',
+        city: 'Madrid',
+        province: 'Madrid'
     },
 
-]
+];
+
+export const mandatoryFields = ['name', 'surname', 'age', 'email', 'password'];
