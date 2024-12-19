@@ -1,5 +1,5 @@
 import { mandatoryFields } from '../db/users.js';
-import userModel from '../models/userModel.js';
+import * as userModel from '../models/userModel.js';
 
 export const getUser = (id) => {
 
@@ -15,7 +15,6 @@ export const createUser = (userData) => {
     const hasAllKeys = mandatoryFields.every(exists);
 
     if (hasNullValue || !hasAllKeys) {
-        console.log('anda re piola')
         return;
     }
 
@@ -23,8 +22,3 @@ export const createUser = (userData) => {
 
     return newUser;
 };
-
-export default {
-    getUser,
-    createUser
-}
