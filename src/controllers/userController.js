@@ -1,7 +1,7 @@
 import * as userService from '../services/userService.js';
 import createHttpError from 'http-errors';
 import { status } from "http-status";
-import { Joi } from 'joi';
+
 
 export const getUser = (req, res) => {
 
@@ -31,7 +31,7 @@ export const createUser = (req, res) => {
         res.status(400);
         res.send({
             "status": false,
-            "message": createHttpError(400, "can't create user: it has null/empty value")
+            "message": createHttpError(400, "can't create user")
         });
     }
 
