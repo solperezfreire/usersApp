@@ -13,3 +13,10 @@ export const createUser = (userData) => {
 
     return newUser;
 };
+
+export const updateUser = (id, userData) => {
+
+    const updatedUser = userModel.getUserByIdAndUpdate(id, userData);
+
+    return updatedUser;
+};

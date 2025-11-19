@@ -1,12 +1,13 @@
 import { Router } from 'express';
-import { getUser, createUser } from '../controllers/userController.js';
-import { validateUser } from '../middlewares/userMiddleware.js';
+import { getUser, createUser, updateUser } from '../controllers/userController.js';
+import { validateCreateUser, validateUpdateUser } from '../middlewares/userMiddleware.js';
 
 const routes = Router();
 
 routes
     .get('/users/:id', getUser)
-    .post('/users', validateUser, createUser)
+    .post('/users', validateCreateUser, createUser)
+    .patch('/users/:id', validateUpdateUser, updateUser)
     ;
 
 export { routes };

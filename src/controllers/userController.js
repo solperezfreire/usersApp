@@ -40,3 +40,26 @@ export const createUser = (req, res) => {
         "data": { id: newUser }
     });
 };
+
+export const updateUser = (req, res) => {
+
+    const { id } = req.params;
+
+    const updatedUser = userService.updateUser(id, req.body);
+
+    if (!updatedUser) {
+
+        const errorDetail = createHttpError(400, "can't update user");
+
+        res.status(400);
+        res.send({
+            "status": false,
+            "message": errorDetail.message
+        });
+    }
+
+    res.send({
+        "status": true,
+        "data": updatedUser
+    });
+};

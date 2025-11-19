@@ -28,3 +28,16 @@ export const insert = (userData) => {
 
     return newUser.id;
 };
+
+export const getUserByIdAndUpdate = (id, userData) => {
+
+    users[id - 1].age = userData.age;
+    users[id - 1].email = userData.email;
+    users[id - 1].address = userData.address;
+    users[id - 1].city = userData.city;
+    users[id - 1].province = userData.province;
+
+    const updatedUser = users.find((user) => user.id == id);
+
+    return updatedUser;
+};

@@ -30,7 +30,7 @@ export const users = [
         password: 'password3',
         address: 'Wallaby 42',
         city: 'Sydney',
-        provincia: 'Nueva Gales del Sur'
+        province: 'Nueva Gales del Sur'
     },
     {
         id: 4,
