@@ -27,3 +27,10 @@ export const updateUser = (id, userData) => {
 
     return updatedUser;
 };
+
+export const deregisterUser = (id) => {
+
+    const deregisteredUser = userModel.deregisterUserById(id);
+
+    return deregisteredUser;
+};

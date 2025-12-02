@@ -77,3 +77,26 @@ export const updateUser = (req, res) => {
         "data": updatedUser
     });
 };
+
+export const deregisterUser = (req, res) => {
+
+    const { id } = req.params;
+
+    const deregisteredUser = userService.deregisterUser(id);
+
+    if (!deregisteredUser) {
+
+        const errorDetail = createHttpError(400, "can't deregister user");
+
+        res.status(400);
+        res.send({
+            "status": false,
+            "message": errorDetail.message
+        });
+    }
+
+    res.send({
+        "status": true,
+        "data": deregisteredUser
+    });
+};

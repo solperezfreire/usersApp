@@ -8,7 +8,8 @@ export const users = [
         password: 'password1',
         address: 'Avenida Siempreviva 742',
         city: 'Springfield',
-        province: 'Oregon'
+        province: 'Oregon',
+        isActive: true
     },
     {
         id: 2,
@@ -19,7 +20,8 @@ export const users = [
         password: 'password2',
         address: 'Av Libertador 1546',
         city: 'CABA',
-        province: 'CABA'
+        province: 'CABA',
+        isActive: true
     },
     {
         id: 3,
@@ -30,7 +32,8 @@ export const users = [
         password: 'password3',
         address: 'Wallaby 42',
         city: 'Sydney',
-        province: 'Nueva Gales del Sur'
+        province: 'Nueva Gales del Sur',
+        isActive: true
     },
     {
         id: 4,
@@ -41,7 +44,8 @@ export const users = [
         password: 'password4',
         address: '12 Lexington',
         city: 'London',
-        province: 'London'
+        province: 'London',
+        isActive: true
     },
     {
         id: 5,
@@ -52,7 +56,8 @@ export const users = [
         password: 'password5',
         address: '652 5th avenue',
         city: 'Manhattan',
-        province: 'New York'
+        province: 'New York',
+        isActive: true
     },
     {
         id: 6,
@@ -63,7 +68,8 @@ export const users = [
         password: 'password6',
         address: 'Av des Champs-Elysees 52',
         city: 'Paris',
-        province: 'Ile-de-France'
+        province: 'Ile-de-France',
+        isActive: true
     },
     {
         id: 7,
@@ -74,9 +80,8 @@ export const users = [
         password: 'password7',
         address: 'Gran Via 17',
         city: 'Madrid',
-        province: 'Madrid'
+        province: 'Madrid',
+        isActive: true
     },
 
 ];
-
-export const mandatoryFields = ['name', 'surname', 'age', 'email', 'password'];

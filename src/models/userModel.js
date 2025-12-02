@@ -21,7 +21,8 @@ export const insert = (userData) => {
         email: email,
         address: address,
         city: city,
-        province: province
+        province: province,
+        isActive: true
     };
 
     users.push(newUser);
@@ -48,3 +49,16 @@ export const getUserByEmail = (email) => {
 
     return userFound;
 };
+
+export const deregisterUserById = (id) => {
+
+    const deregisterdedUser = users.find((user) => user.id == id);
+
+    if (deregisterdedUser) {
+        users[id - 1].isActive = false;
+    }
+
+    return deregisterdedUser;
+};
+
+
