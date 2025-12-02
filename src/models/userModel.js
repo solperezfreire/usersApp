@@ -41,3 +41,10 @@ export const getUserByIdAndUpdate = (id, userData) => {
 
     return updatedUser;
 };
+
+export const getUserByEmail = (email) => {
+
+    const userFound = users.find((user) => user.email == email);
+
+    return userFound;
+};

@@ -7,6 +7,13 @@ export const getUser = (id) => {
     return userFound;
 };
 
+export const getUserByEmail = (email) => {
+
+    const userFound = userModel.getUserByEmail(email);
+
+    return userFound;
+};
+
 export const createUser = (userData) => {
 
     const newUser = userModel.insert(userData);

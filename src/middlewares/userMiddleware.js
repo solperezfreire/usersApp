@@ -4,7 +4,7 @@ import createHttpError from 'http-errors';
 export const validateCreateUser = (req, res, next) => {
     const error = createUserSchema.validate(req.body);
 
-    if (error) {
+    if (error.error) {
         const errorDetail = createHttpError(400, error.error.details[0].message);
 
         res.status(400);
@@ -20,7 +20,7 @@ export const validateCreateUser = (req, res, next) => {
 export const validateUpdateUser = (req, res, next) => {
     const error = updateUserSchema.validate(req.body);
 
-    if (error) {
+    if (error.error) {
         const errorDetail = createHttpError(400, error.error.details[0].message);
 
         res.status(400);

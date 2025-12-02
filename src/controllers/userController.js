@@ -25,6 +25,20 @@ export const getUser = (req, res) => {
 
 export const createUser = (req, res) => {
 
+    const { email } = req.body;
+
+    const emailAlreadyExists = userService.getUserByEmail(email);
+
+    if (emailAlreadyExists) {
+        const errorDetail = createHttpError(400, "email already exists");
+
+        res.status(409);
+        res.send({
+            "status": false,
+            "message": errorDetail.message
+        });
+    }
+
     const newUser = userService.createUser(req.body);
 
     if (!newUser) {
