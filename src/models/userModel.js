@@ -7,6 +7,11 @@ export const getUserById = (id) => {
     return userFound;
 };
 
+export const getAllUsers = () => {
+
+    return users;
+};
+
 export const insert = (userData) => {
 
     const { name, surname, age, email, address, city, province } = userData;

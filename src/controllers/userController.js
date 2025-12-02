@@ -23,6 +23,24 @@ export const getUser = (req, res) => {
     });
 };
 
+export const getAllUsers = (req, res) => {
+
+    const users = userService.getAllUsers();
+
+    if (!users) {
+        res.status(404);
+        res.send({
+            "status": false,
+            "message": status[404]
+        });
+    }
+
+    res.send({
+        "status": true,
+        "data": users
+    });
+};
+
 export const createUser = (req, res) => {
 
     const { email } = req.body;
