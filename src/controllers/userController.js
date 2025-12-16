@@ -41,7 +41,7 @@ export const getAllUsers = (req, res) => {
     });
 };
 
-export const createUser = (req, res) => {
+export const createUser = async (req, res) => {
 
     const { email } = req.body;
 
@@ -57,7 +57,7 @@ export const createUser = (req, res) => {
         });
     }
 
-    const newUser = userService.createUser(req.body);
+    const newUser = await userService.createUser(req.body);
 
     if (!newUser) {
         res.status(400);
@@ -71,6 +71,8 @@ export const createUser = (req, res) => {
         "status": true,
         "data": { id: newUser }
     });
+
+
 };
 
 export const updateUser = (req, res) => {

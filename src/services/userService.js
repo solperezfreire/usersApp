@@ -21,9 +21,9 @@ export const getUserByEmail = (email) => {
     return userFound;
 };
 
-export const createUser = (userData) => {
+export const createUser = async (userData) => {
 
-    const newUser = userModel.insert(userData);
+    const newUser = await userModel.insert(userData);
 
     return newUser;
 };

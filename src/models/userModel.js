@@ -1,4 +1,5 @@
 import { users } from "../db/users.js";
+import argon2 from 'argon2';
 
 export const getUserById = (id) => {
 
@@ -12,11 +13,13 @@ export const getAllUsers = () => {
     return users;
 };
 
-export const insert = (userData) => {
+export const insert = async (userData) => {
 
-    const { name, surname, age, email, address, city, province } = userData;
+    const { name, surname, age, email, address, city, province, password } = userData;
 
     const newId = users[users.length - 1].id + 1;
+
+    const hash = await argon2.hash(password);
 
     const newUser = {
         id: newId,
@@ -24,6 +27,7 @@ export const insert = (userData) => {
         surname: surname,
         age: age,
         email: email,
+        password: hash,
         address: address,
         city: city,
         province: province,
@@ -32,7 +36,7 @@ export const insert = (userData) => {
 
     users.push(newUser);
 
-    return newUser.id;
+    return newId;
 };
 
 export const getUserByIdAndUpdate = (id, userData) => {
