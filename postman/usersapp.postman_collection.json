@@ -37,13 +37,43 @@
 			"response": []
 		},
 		{
+			"name": "/users",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/users",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "/postUser",
 			"request": {
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"name\": \"Elvis\",\n    \"surname\": \"Cochuelo\",\n    \"age\": 45,\n    \"email\": \"elviscochuelo@gmail.com\",\n    \"address\": \"calle falsa 123\",\n    \"city\": \"Gotham\",\n    \"province\": \"Gotham\"\n}",
+					"raw": "{\n    \"name\": \"Buzz\",\n    \"surname\": \"Lightyear\",\n    \"age\": 25,\n    \"email\": \"buzzlightyear@gmail.com\",\n    \"address\": \"Elm Street 234\",\n    \"password\": \"password9\",\n    \"city\": \"Emeryville\",\n    \"province\": \"California\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -86,6 +116,35 @@
 					"path": [
 						"users",
 						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/deregisterUser",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/users/3/deregister",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users",
+						"3",
+						"deregister"
 					]
 				}
 			},
