@@ -1,5 +1,7 @@
 import { users } from "../db/users.js";
 import argon2 from 'argon2';
+import { ulid } from 'ulid';
+
 
 export const getUserById = (id) => {
 
@@ -17,7 +19,7 @@ export const insert = async (userData) => {
 
     const { name, surname, age, email, address, city, province, password } = userData;
 
-    const newId = users[users.length - 1].id + 1;
+    const newId = ulid();
 
     const hash = await argon2.hash(password);
 
@@ -33,6 +35,10 @@ export const insert = async (userData) => {
         province: province,
         isActive: true
     };
+
+    console.log('LLEGO ACA');
+    console.log({ users });
+    console.log({ newId });
 
     users.push(newUser);
 

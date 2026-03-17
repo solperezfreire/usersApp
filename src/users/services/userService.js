@@ -1,4 +1,5 @@
 import * as userModel from '../models/userModel.js';
+import createHttpError from 'http-errors';
 
 export const getUser = (id) => {
 
@@ -23,9 +24,16 @@ export const getUserByEmail = (email) => {
 
 export const createUser = async (userData) => {
 
+    const { age } = userData;
+
+    if (age < 18) {
+        throw createHttpError(400, 'User must be at least 18 years old');
+    }
+
     const newUser = await userModel.insert(userData);
 
-    return newUser;
+    return newUser
+
 };
 
 export const updateUser = (id, userData) => {

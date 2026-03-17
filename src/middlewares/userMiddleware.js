@@ -1,34 +1,28 @@
-import { createUserSchema, updateUserSchema } from "../schemas/userSchema.js";
 import createHttpError from 'http-errors';
 
-export const validateCreateUser = (req, res, next) => {
-    const error = createUserSchema.validate(req.body);
+const runValidation = (schema, data) => {
+    const { error, value } = schema.validate(data, {
+        abortEarly: false,
+        stripUnknown: true
+    });
 
-    if (error.error) {
-        const errorDetail = createHttpError(400, error.error.details[0].message);
-
-        res.status(400);
-        res.send({
-            "status": false,
-            "message": errorDetail.message
-        });
+    if (error) {
+        const messages = error.details.map(d => d.message).join(', ');
+        throw createHttpError(400, messages);
     }
 
-    next();
+    return value;
 };
 
-export const validateUpdateUser = (req, res, next) => {
-    const error = updateUserSchema.validate(req.body);
-
-    if (error.error) {
-        const errorDetail = createHttpError(400, error.error.details[0].message);
-
-        res.status(400);
-        res.send({
-            "status": false,
-            "message": errorDetail.message
-        });
-    }
-
-    next();
+export const createValidator = ({ schema, property = 'body' }) => {
+    return (req, res, next) => {
+        try {
+            console.log(`req[property]: ${req[property]}`);
+            console.log(`req.body: ${req.body}`);
+            req[property] = runValidation(schema, req[property]);
+            next();
+        } catch (err) {
+            next(err); // delega al error handler global
+        }
+    };
 };
