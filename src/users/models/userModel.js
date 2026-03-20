@@ -36,10 +36,6 @@ export const insert = async (userData) => {
         isActive: true
     };
 
-    console.log('LLEGO ACA');
-    console.log({ users });
-    console.log({ newId });
-
     users.push(newUser);
 
     return newId;

@@ -1,7 +1,7 @@
 import * as userService from '../services/userService.js';
 import createHttpError from 'http-errors';
 import { status } from "http-status";
-import { interceptor, resOk } from '../../utils/interceptor.js';
+import { interceptor, resOk } from '../../../utils/interceptor.js';
 
 
 export const getUser = interceptor(async (req, res) => {
