@@ -1,16 +1,18 @@
 services:
   users:
-    build: .
+    build:
+      context: ./users
     env_file:
       - .env
     container_name: users
     ports:
-      - "4000:4000"
+      - "4000:3000"
     depends_on:
-      - postgres
+      postgres:
+        condition: service_healthy
     volumes:
-      - .:/usr/src/app
-    command: npm start
+      - ./users:/usr/src/app
+    command: sh -c "npm run migration:run && npm run seed && npm start"
 
   postgres:
     image: postgres:15
