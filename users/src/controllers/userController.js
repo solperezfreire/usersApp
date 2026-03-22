@@ -7,7 +7,7 @@ import { interceptor, resOk } from '../utils/interceptor.js';
 export const getUser = interceptor(async (req, res) => {
     const { id } = req.params;
 
-    const user = userService.getUser(id);
+    const user = await userService.getUser(id);
 
     if (!user) {
         throw createHttpError(404, 'User not found');
@@ -21,9 +21,9 @@ export const getUser = interceptor(async (req, res) => {
 
 
 export const getAllUsers = interceptor(async (req, res) => {
-    const users = userService.getAllUsers();
+    const users = await userService.getAllUsers();
 
-    if (!users) {
+    if (users.length === 0) {
         throw createHttpError(404, 'Users not found');
     }
 
@@ -33,7 +33,7 @@ export const getAllUsers = interceptor(async (req, res) => {
 export const createUser = interceptor(async (req, res) => {
     const { email } = req.body;
 
-    const emailAlreadyExists = userService.getUserByEmail(email);
+    const emailAlreadyExists = await userService.getUserByEmail(email);
 
     if (emailAlreadyExists) {
         throw createHttpError(409, 'Email already exists');
@@ -53,7 +53,7 @@ export const createUser = interceptor(async (req, res) => {
 export const updateUser = interceptor(async (req, res) => {
     const { id } = req.params;
 
-    const updatedUser = userService.updateUser(id, req.body);
+    const updatedUser = await userService.updateUser(id, req.body);
 
     if (!updatedUser) {
         throw createHttpError(400, "Can't update user");
@@ -65,7 +65,7 @@ export const updateUser = interceptor(async (req, res) => {
 export const deregisterUser = interceptor(async (req, res) => {
     const { id } = req.params;
 
-    const deregisteredUser = userService.deregisterUser(id);
+    const deregisteredUser = await userService.deregisterUser(id);
 
     if (!deregisteredUser) {
         throw createHttpError(400, "Can't deregister user");

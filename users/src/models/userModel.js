@@ -1,18 +1,22 @@
-import { users } from "../db/users.js";
+import { AppDataSource } from "../config/data-source.js";
+import { User } from "../entities/User.js";
 import argon2 from 'argon2';
 import { ulid } from 'ulid';
 
+const getUsersTable = () => AppDataSource.getRepository(User);
 
-export const getUserById = (id) => {
+const users = getUsersTable();
 
-    const userFound = users.find((user) => user.id == id);
+export const getUserById = async (id) => {
+
+    const userFound = await users.findOneBy({ id });
 
     return userFound;
 };
 
-export const getAllUsers = () => {
+export const getAllUsers = async () => {
 
-    return users;
+    return await users.find();
 };
 
 export const insert = async (userData) => {
@@ -23,53 +27,55 @@ export const insert = async (userData) => {
 
     const hash = await argon2.hash(password);
 
-    const newUser = {
+    const newUser = users.create({
         id: newId,
-        name: name,
-        surname: surname,
-        age: age,
-        email: email,
+        name,
+        surname,
+        age,
+        email,
         password: hash,
-        address: address,
-        city: city,
-        province: province,
+        address,
+        city,
+        province,
         isActive: true
-    };
+    });
 
-    users.push(newUser);
+    await users.save(newUser);
 
     return newId;
 };
 
-export const getUserByIdAndUpdate = (id, userData) => {
+export const getUserByIdAndUpdate = async (id, userData) => {
 
-    users[id - 1].age = userData.age;
-    users[id - 1].email = userData.email;
-    users[id - 1].address = userData.address;
-    users[id - 1].city = userData.city;
-    users[id - 1].province = userData.province;
+    const updatedUser = await users.update({ id },
+        {
+            age: userData.age,
+            email: userData.email,
+            address: userData.address,
+            city: userData.city,
+            province: userData.province
+        }
+    );
 
-    const updatedUser = users.find((user) => user.id == id);
-
-    return updatedUser;
+    return await users.findOneBy({ id });
 };
 
-export const getUserByEmail = (email) => {
+export const getUserByEmail = async (email) => {
 
-    const userFound = users.find((user) => user.email == email);
+    const userFound = await users.findOneBy({ email });
 
     return userFound;
 };
 
-export const deregisterUserById = (id) => {
+export const deregisterUserById = async (id) => {
 
-    const deregisterdedUser = users.find((user) => user.id == id);
+    const deregisterdedUser = await users.update({ id },
+        {
+            isActive: false
+        }
+    );
 
-    if (deregisterdedUser) {
-        users[id - 1].isActive = false;
-    }
-
-    return deregisterdedUser;
+    return await users.findOneBy({ id });
 };
 
 

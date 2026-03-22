@@ -1,23 +1,23 @@
 import * as userModel from '../models/userModel.js';
 import createHttpError from 'http-errors';
 
-export const getUser = (id) => {
+export const getUser = async (id) => {
 
-    const userFound = userModel.getUserById(id);
+    const userFound = await userModel.getUserById(id);
 
     return userFound;
 };
 
-export const getAllUsers = () => {
+export const getAllUsers = async () => {
 
-    const usersFound = userModel.getAllUsers();
+    const usersFound = await userModel.getAllUsers();
 
     return usersFound;
 };
 
-export const getUserByEmail = (email) => {
+export const getUserByEmail = async (email) => {
 
-    const userFound = userModel.getUserByEmail(email);
+    const userFound = await userModel.getUserByEmail(email);
 
     return userFound;
 };
@@ -36,16 +36,16 @@ export const createUser = async (userData) => {
 
 };
 
-export const updateUser = (id, userData) => {
+export const updateUser = async (id, userData) => {
 
-    const updatedUser = userModel.getUserByIdAndUpdate(id, userData);
+    const updatedUser = await userModel.getUserByIdAndUpdate(id, userData);
 
     return updatedUser;
 };
 
-export const deregisterUser = (id) => {
+export const deregisterUser = async (id) => {
 
-    const deregisteredUser = userModel.deregisterUserById(id);
+    const deregisteredUser = await userModel.deregisterUserById(id);
 
     return deregisteredUser;
 };
