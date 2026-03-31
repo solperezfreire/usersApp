@@ -17,8 +17,6 @@ const runValidation = (schema, data) => {
 export const createValidator = ({ schema, property = 'body' }) => {
     return (req, res, next) => {
         try {
-            console.log(`req[property]: ${req[property]}`);
-            console.log(`req.body: ${req.body}`);
             req[property] = runValidation(schema, req[property]);
             next();
         } catch (err) {

@@ -41,8 +41,6 @@ export const createUser = interceptor(async (req, res) => {
 
     const newUser = await userService.createUser(req.body);
 
-    console.log('antes de if');
-    console.log({ newUser });
     if (!newUser) {
         throw createHttpError(400, "Can't create user");
     }

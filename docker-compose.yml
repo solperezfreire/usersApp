@@ -12,7 +12,7 @@ services:
         condition: service_healthy
     volumes:
       - ./users:/usr/src/app
-    command: sh -c "npm run migration:run && npm run seed && npm start"
+    command: sh -c "npm run migration:run && npm start"
 
   postgres:
     image: postgres:15

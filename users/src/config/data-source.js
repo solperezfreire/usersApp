@@ -11,7 +11,7 @@ export const AppDataSource = new DataSource({
     database: process.env.DB_NAME,
     entities: [User],
     migrations: ['src/migrations/*.js'],
-    synchronize: true
+    synchronize: false
 });
 
 await AppDataSource.initialize();
